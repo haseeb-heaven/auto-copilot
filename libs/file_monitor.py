@@ -8,11 +8,10 @@ import pyautogui
 import pyperclip
 
 class FileMonitor(FileSystemEventHandler):
-    monitor_time = 15 # 15 seconds
     keybindings_parser = None
     keybindings_keys = None
     
-    def __init__(self, filename, compiler):
+    def __init__(self, filename, compiler,monitor_time=15):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
