@@ -40,6 +40,7 @@ And you need to have the following compilers installed on your system:
 - [JavaScript](https://www.javascript.com/)
 
 In order to execute your code automatically and for the live preview.
+Just download ones you need mostly.
 
 ### Github Copilot 🔑
 And you need to have **Github Copilot** installed on your VS Code. You can download it from [here](https://copilot.github.com/).
@@ -51,12 +52,12 @@ And don't forget to set the **keybindings** for Github Copilot Chat in your VS C
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/autocopilot.git
+    git clone https://github.com/haseeb-heaven/Auto-Copilot.git
     ```
 
 2. Navigate to the project directory:
     ```sh
-    cd autocopilot
+    cd Auto-Copilot
     ```
 
 3. Run the script with your file as an argument:
