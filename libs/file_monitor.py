@@ -23,4 +23,6 @@ class FileMonitor(FileSystemEventHandler):
                 result = runner.run_code(open(self.filename).read(), self.compiler)
                 
                 # Print the compiler output to the console
+                # clear the previous output
+                print("\033c")
                 print(result)

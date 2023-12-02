@@ -7,6 +7,14 @@ class CompilerManager:
             ".c": "C",
             ".cpp": "C++",
             ".java": "Java",
+            ".swift": "Swift",
+            ".js": "JavaScript",
+            ".scala": "Scala",
+            ".rb": "Ruby",
+            ".cs": "C#", # C Sharp
+            ".go": "Go",
+            ".rs": "Rust",
+            ".kt": "Kotlin",
         }
 
     def get_extension(self, filename):
