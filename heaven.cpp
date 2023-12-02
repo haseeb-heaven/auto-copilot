@@ -15,8 +15,6 @@ bool isPrime(int num) {
 
 int main() {
     int number = 30;
-    //std::cout << "Enter a number (N): ";
-    //std::cin >> N;
 
     std::vector<int> primes;
     for (int i = 1; i <= number; i++) {

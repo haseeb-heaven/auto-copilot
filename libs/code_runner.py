@@ -4,7 +4,7 @@ import libs.logger as logger
 
 class CodeRunner:
     def __init__(self):
-        self.logger = logger.setup_logger()
+        self.logger = logger.Logger.setup_logger()
         self.logger.info("CodeRunner initialized.")
         
     def run_code(self,code, language):

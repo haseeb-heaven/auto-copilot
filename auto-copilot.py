@@ -3,10 +3,10 @@ import time
 from watchdog.observers import Observer
 from libs.file_monitor import FileMonitor
 from libs.compiler_manager import CompilerManager
-from libs.logger import setup_logger
+import libs.logger
 
 def main(filename, interval):
-    logger = setup_logger()
+    logger = libs.logger.Logger.setup_logger()
 
     compiler_manager = CompilerManager()
     file_extension = compiler_manager.get_extension(filename)

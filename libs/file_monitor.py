@@ -16,7 +16,7 @@ class FileMonitor(FileSystemEventHandler):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
-        self.logger = libs.logger.setup_logger()
+        self.logger = libs.logger.Logger.setup_logger()
         
         # Initialize the parser
         self.keybindings_parser = KeybindingsParser()
