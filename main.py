@@ -1,9 +1,9 @@
 import sys
 import time
 from watchdog.observers import Observer
-from file_monitor import FileMonitor
-from compiler_manager import CompilerManager
-from logger import setup_logger
+from libs.file_monitor import FileMonitor
+from libs.compiler_manager import CompilerManager
+from libs.logger import setup_logger
 
 def main(filename, interval):
     logger = setup_logger()

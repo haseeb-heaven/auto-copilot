@@ -1,14 +1,14 @@
 import os
-import logger
+import libs.logger
 from watchdog.events import FileSystemEventHandler
-from code_runner import CodeRunner
+from libs.code_runner import CodeRunner
 
 class FileMonitor(FileSystemEventHandler):
     def __init__(self, filename, compiler):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
-        self.logger = logger.setup_logger()
+        self.logger = libs.logger.setup_logger()
 
     def on_modified(self, event):
         self.logger.info(f"Event: {event} src_path: {event.src_path} filename: {self.filename}")

@@ -1,6 +1,6 @@
 import subprocess
 import tempfile
-import logger
+import libs.logger as logger
 
 class CodeRunner:
     def __init__(self):
