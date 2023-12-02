@@ -71,20 +71,6 @@ This project is licensed under the [MIT LICENSE] - see the LICENSE file for deta
 - **HeavenHM** - [haseeb-heaven](https://github.com/haseeb-heaven)
 
 
-## Pre-requisites 📝
-You need to have Python 3 installed on your system. You can download it from [here](https://www.python.org/downloads/).
-And you need to have the following compilers installed on your system:
-- [GCC](https://gcc.gnu.org/)
-- [Java](https://www.java.com/en/)
-- [Python](https://www.python.org/)
-- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
-- [Swift](https://swift.org/)
-- [Kotlin](https://kotlinlang.org/)
-- [Go](https://golang.org/)
-- [JavaScript](https://www.javascript.com/)
-
-In order to execute your code automatically.
-
 ## Features ✨
 
 - **File Monitoring** 📂: Auto Copilot watches your file for changes and automatically fixes errors.
