@@ -1,5 +1,5 @@
+![copilot](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/logo.gif?raw=true)</br>
 # Auto Copilot - An Automation Tool for Github Copilot 🚀💡
-![logo](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/logo.png?raw=true "Auto CoPilot")</br>
 
 ### **Support Project:**
 <a href="https://www.buymeacoffee.com/haseebheaven">
