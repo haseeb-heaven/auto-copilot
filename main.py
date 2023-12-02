@@ -45,4 +45,7 @@ if __name__ == "__main__":
         interval = int(sys.argv[2])
         main(filename, interval)
     except Exception as exception:
+        # add the stack trace to the log
+        import traceback
+        traceback.print_exc()
         print("An error occurred: %s" % str(exception))

@@ -17,4 +17,4 @@ def setup_logger():
 
     # Add the handler to the logger
     logger.addHandler(file_handler)
-    return
+    return logger

@@ -1,5 +1,5 @@
 import os
-import logging
+import logger
 from watchdog.events import FileSystemEventHandler
 from code_runner import CodeRunner
 
@@ -8,7 +8,7 @@ class FileMonitor(FileSystemEventHandler):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
-        self.logger = logging.getLogger('live_coding_editor')
+        self.logger = logger.setup_logger()
 
     def on_modified(self, event):
         self.logger.info(f"Event: {event} src_path: {event.src_path} filename: {self.filename}")
@@ -17,8 +17,10 @@ class FileMonitor(FileSystemEventHandler):
             current_modified = os.path.getmtime(self.filename)
             if current_modified != self.last_modified:
                 self.last_modified = current_modified
-                logging.info(f"File {self.filename} modified. Compiling and running.")
+                self.logger.info(f"File {self.filename} modified. Compiling and running.")
                 runner = CodeRunner()
-                logging.info(f"Running code: {open(self.filename).read()}")
+                self.logger.info(f"Running code: {open(self.filename).read()}")
                 result = runner.run_code(open(self.filename).read(), self.compiler)
-                self.logger.info(f"Result: {result}")
+                
+                # Print the compiler output to the console
+                print(result)

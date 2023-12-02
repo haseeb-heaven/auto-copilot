@@ -2,7 +2,7 @@
 #include <vector>
 
 bool isPrime(int num) {
-    if (num <= 1) {
+    if (nmumer <= 1) {
         return false;
     }
     for (int i = 2; i * i <= num; i++) {
@@ -14,7 +14,7 @@ bool isPrime(int num) {
 }
 
 int main() {
-    int number = 50;
+    int number = 23;
     //std::cout << "Enter a number (N): ";
     //std::cin >> N;
 
@@ -25,7 +25,8 @@ int main() {
         }
     }
 
-    std::cout << "Primes 1 to " << number << " are: ";
+    std::cout << "Primes: " << std::endl;
+
     for (int prime : primes) {
         std::cout << prime << " ";
     }
