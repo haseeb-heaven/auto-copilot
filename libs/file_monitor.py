@@ -7,23 +7,24 @@ import pyautogui
 import pyperclip
 
 class FileMonitor(FileSystemEventHandler):
+    monitor_time = 15 # 15 seconds
+    
     def __init__(self, filename, compiler):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
         self.logger = libs.logger.setup_logger()
 
-    def self_fix_error(self, result:str):
+    def self_fix_error(self,code_error):
 
         # show the UI error window 
         print("Fixing the auto error")
-        #pyautogui.alert(result, "Error", button="OK")
 
         self.logger.info("Trying to copy the error to the clipboard")
         
-        result = "This is the error in the code \n" + result + "\n Please try to fix it and only give relevant code thats it"
+        result = "This is the error in the code \n" + code_error + "\n Please try to fix it and only give relevant code and dont change everything \n"
         if result:
-            pyperclip.copy(result)
+            pyperclip.copy(code_error)
         else:
             self.logger.info("Error is empty")
             print("Error is empty")
@@ -53,7 +54,7 @@ class FileMonitor(FileSystemEventHandler):
         pyautogui.press('enter')
         
         
-        time.sleep(20)
+        time.sleep(self.monitor_time)
         print("Trying accepting the solution")
         pyautogui.hotkey('alt', 'enter')
         print("Fixed the error with the solution")
@@ -76,21 +77,21 @@ class FileMonitor(FileSystemEventHandler):
                 self.logger.info(f"File {self.filename} modified. Compiling and running.")
                 runner = CodeRunner()
                 self.logger.info(f"Running code: {open(self.filename).read()}")
-                code_output = runner.run_code(open(self.filename).read(), self.compiler)
+                code_output,code_error = runner.run_code(open(self.filename).read(), self.compiler)
                 
                 # Print the compiler output to the console
                 # clear the previous output
                 print("\033c")
-                print(code_output)
+                print(f"Output: {code_output}")
+                print(f"Error: {code_error}")
 
                 try:
                     # check if result is an error
-                    if "error" in code_output.lower():
-                        result = self.self_fix_error(code_output)
+                    if code_error:
+                        result = self.self_fix_error(code_error)
                         if result:
                             print("Error fixed")
-                            code_output = ""
+                            code_error = None # Clear the error
                         
                 except Exception as exception:
-                    self.logger.error(f"Error in code: {exception}")
-                    print("Exception: ", exception)
+                    raise exception
