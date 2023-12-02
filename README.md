@@ -1,4 +1,5 @@
 # Auto Copilot - An Automation Tool for Github Copilot 🚀💡
+![logo](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/logo.png?raw=true "Auto CoPilot")</br>
 
 ### **Support Project:**
 <a href="https://www.buymeacoffee.com/haseebheaven">
@@ -92,6 +93,9 @@ Auto Error fixed 🚀💡</br>
 
 Getting the Real-time output 📺</br>
 ![copilot-error1](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/auto-copilot-error-fixed.png?raw=true "Real-time output")</br>
+
+### YouTube Video 📺
+[![Auto Copilot](https://img.youtube.com/vi/zDpXe-LvvfU/0.jpg)](https://www.youtube.com/watch?v=zDpXe-LvvfU)
 
 ## Contributing 🤝
 Contributions, issues and feature requests are welcome! Feel free to add PRs 🚀.
