@@ -1,4 +1,4 @@
-# Auto Copilot 🌙✨
+# Auto Copilot - An Automation Tool for Github Copilot 🚀💡
 
 ### **Support Project:**
 <a href="https://www.buymeacoffee.com/haseebheaven">
@@ -14,7 +14,6 @@ and give you **Real-time** 📺 output of your code. 🎯🔧💻 just at your f
 Unbelievable, right? It's like having a _copilot_ 🚁👨‍✈️ that **never sleeps**! 😎🌙✨
 
 This tool was inspired by [**XCode**](https://developer.apple.com/xcode/), which _automatically executes_ your code in Playground 🎮, and [**Compiler Explorer**](https://godbolt.org/), which _automatically compiles_ your code after every change. 🎯🔧💻
-
 
 
 ## Features ✨
@@ -92,7 +91,7 @@ Auto Error fixed 🚀💡</br>
 ![copilot-error1](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/auto-copilot-error-fix-2.png?raw=true "Error & Bug fixed")</br>
 
 Getting the Real-time output 📺</br>
-![copilot-error1](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/auto-copilot-error-fixex.png?raw=true "Real-time output")</br>
+![copilot-error1](https://github.com/haseeb-heaven/Auto-Copilot/blob/main/resources/auto-copilot-error-fixed.png?raw=true "Real-time output")</br>
 
 ## Contributing 🤝
 Contributions, issues and feature requests are welcome! Feel free to add PRs 🚀.
