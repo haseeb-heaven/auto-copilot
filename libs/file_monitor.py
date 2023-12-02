@@ -12,6 +12,7 @@ class FileMonitor(FileSystemEventHandler):
     keybindings_keys = None
     
     def __init__(self, filename, compiler,monitor_time=15):
+        self.monitor_time = monitor_time
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
@@ -93,9 +94,10 @@ class FileMonitor(FileSystemEventHandler):
                 self.logger.info(f"Running code: {open(self.filename).read()}")
                 code_output,code_error = runner.run_code(open(self.filename).read(), self.compiler)
                 
-                # Print the compiler output to the console
                 # clear the previous output
                 print("\033c")
+                
+                # Print the compiler output to the console
                 print(f"Output: {code_output}")
                 print(f"Error: {code_error}")
 
@@ -103,6 +105,9 @@ class FileMonitor(FileSystemEventHandler):
                     # check if result is an error
                     if code_error:
                         result = self.self_fix_error(code_error)
+                        # Check if output contains error.
+                        if "error" in code_output.lower():
+                            result += "\n" + code_output
                         if result:
                             print("Error fixed")
                             code_error = None # Clear the error
