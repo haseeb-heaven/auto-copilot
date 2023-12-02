@@ -50,26 +50,31 @@ class FileMonitor(FileSystemEventHandler):
         pyautogui.hotkey('command', 'a')
         time.sleep(1)
         
+        # Opening the interactive window
         self.logger.info("Trying to open the interactive window")
         print("Trying to open the interactive window")
         # using pyautgui click these keys to open the interactive window
         pyautogui.hotkey(self.keybindings_keys[0]) # inlineChat.start
         self.logger.info("Opened the interactive window")
         time.sleep(3)
-        self.logger.info("Trying to paste the error in the interactive window")
-        print("Trying to paste the error in the interactive window")
-        # paste the error in the interactive window
+        
+        # Setting error in the interactive window
         pyautogui.hotkey('command', 'v')
         self.logger.info("Pasted the error in the interactive window")
         print("Pasted the error in the interactive window")
+        
+        # Starting the request and waiting for the response
         pyautogui.press('enter')
         
+        # Waiting for the response
         time.sleep(self.monitor_time)
         print("Trying accepting the solution")
+        
+        # Accepting the solution.
         pyautogui.hotkey(self.keybindings_keys[1]) # interactive.acceptChanges
         print("Fixed the error with the solution")
         
-        # save the file
+        # Saving the file
         self.logger.info("Trying to save the file")
         print("Trying to save the file")
         pyautogui.hotkey('command', 's')
