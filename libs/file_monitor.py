@@ -1,5 +1,6 @@
 import os
 import time
+from libs.keybindings_parser import KeybindingsParser
 import libs.logger
 from watchdog.events import FileSystemEventHandler
 from libs.code_runner import CodeRunner
@@ -8,12 +9,22 @@ import pyperclip
 
 class FileMonitor(FileSystemEventHandler):
     monitor_time = 15 # 15 seconds
+    keybindings_parser = None
+    keybindings_keys = None
     
     def __init__(self, filename, compiler):
         self.last_modified = os.path.getmtime(filename)
         self.filename = filename
         self.compiler = compiler
         self.logger = libs.logger.setup_logger()
+        
+        # Initialize the parser
+        self.keybindings_parser = KeybindingsParser()
+        self.keybindings_parser.load_keybindings()
+        keybingings_commands = ["inlineChat.start","interactive.acceptChanges"]
+        self.keybindings_keys = self.keybindings_parser.get_keybindings_keys(keybingings_commands)
+        self.logger.info(f"Keybindings commands: {keybingings_commands}")
+        self.logger.info(f"Keybindings keys: {self.keybindings_keys}")
 
     def self_fix_error(self,code_error):
 
@@ -22,7 +33,7 @@ class FileMonitor(FileSystemEventHandler):
 
         self.logger.info("Trying to copy the error to the clipboard")
         
-        result = "This is the error in the code \n" + code_error + "\n Please try to fix it and only give relevant code and dont change everything \n"
+        result = "This is the error in the code \n" + code_error + "\n Please try to fix it and only give relevant code and dont change anything else beside this code snippet\n"
         if result:
             pyperclip.copy(code_error)
         else:
@@ -42,7 +53,7 @@ class FileMonitor(FileSystemEventHandler):
         self.logger.info("Trying to open the interactive window")
         print("Trying to open the interactive window")
         # using pyautgui click these keys to open the interactive window
-        pyautogui.hotkey('alt', 'k')
+        pyautogui.hotkey(self.keybindings_keys[0]) # inlineChat.start
         self.logger.info("Opened the interactive window")
         time.sleep(3)
         self.logger.info("Trying to paste the error in the interactive window")
@@ -53,10 +64,9 @@ class FileMonitor(FileSystemEventHandler):
         print("Pasted the error in the interactive window")
         pyautogui.press('enter')
         
-        
         time.sleep(self.monitor_time)
         print("Trying accepting the solution")
-        pyautogui.hotkey('alt', 'enter')
+        pyautogui.hotkey(self.keybindings_keys[1]) # interactive.acceptChanges
         print("Fixed the error with the solution")
         
         # save the file
