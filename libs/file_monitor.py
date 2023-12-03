@@ -10,6 +10,8 @@ import pyperclip
 class FileMonitor(FileSystemEventHandler):
     keybindings_parser = None
     keybindings_keys = None
+    max_retry_attempts = 5
+    retry_attempts = 0
     
     def __init__(self, filename, compiler,monitor_time=15):
         self.monitor_time = monitor_time
@@ -106,11 +108,19 @@ class FileMonitor(FileSystemEventHandler):
                     if code_error:
                         result = self.self_fix_error(code_error)
                         # Check if output contains error.
-                        if "error" in code_output.lower():
-                            result += "\n" + code_output
+                        if code_output:
+                            if "error" in code_output.lower():
+                                result += "\n" + code_output
                         if result:
-                            print("Error fixed")
+                            print("The error has been fixed successfully")
                             code_error = None # Clear the error
+                        else:
+                            print(f"Trying to fix error {self.retry_attempts} time")
+                            self.logger.info(f"Trying to fix error {self.retry_attempts} time")
+                            self.retry_attempts += 1
+                            if self.retry_attempts > self.max_retry_attempts:
+                                print("The error could not be fixed")
+                                self.retry_attempts = 0
                         
                 except Exception as exception:
                     raise exception
